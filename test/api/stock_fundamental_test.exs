@@ -12,4 +12,9 @@ defmodule ExFinancialModelingPrep.Api.StockFundamentalTest do
     assert is_list(body)
   end
 
+  test "income_statement/2" do
+    expect(HTTPMock, :get, fn _ -> Mock.income_statement() end)
+    StockFundamental.income_statement("AAPL")
+  end
+
 end

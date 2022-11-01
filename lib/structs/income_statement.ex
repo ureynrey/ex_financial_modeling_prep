@@ -1,4 +1,4 @@
-defmodule ExFinancialModelingPrep.Struct.FinancialStatement do
+defmodule ExFinancialModelingPrep.Struct.IncomeStatement do
     use TypedStruct
 
 
