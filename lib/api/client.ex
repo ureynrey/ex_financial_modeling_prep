@@ -1,8 +1,7 @@
-defmodule ExFinancialModelingPrep.API.Client do
+defmodule ExFinancialModelingPrep.Api.Client do
   @spec get(String.t()) :: {:ok, any()} | {:error, any()}
   def get(url), do: Application.fetch_env!(:ex_financial_modeling_prep, :api_client).get(url)
 end
-
 
 defmodule ExFinancialModelingPrep.API.HTTPoison do
   use HTTPoison.Base
