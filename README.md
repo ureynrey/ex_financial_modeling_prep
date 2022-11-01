@@ -1,6 +1,6 @@
 # ExFinancialModelingPrep
 
-**TODO: Add description**
+An unofficial API Client library for [ExFinancialModelingPrep](https://site.financialmodelingprep.com/developer/docs/?gclid=CjwKCAjw5P2aBhAlEiwAAdY7dPUuKTdX0awGZEXEnNenthIedABa7ip6mLgwVmgCjUYmndmihcKRbhoCa5oQAvD_BwE) 
 
 ## Installation
 
@@ -19,3 +19,5 @@ Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_do
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at <https://hexdocs.pm/ex_financial_modeling_prep>.
 
+## Author note:
+- My first open source project. Feel free to contribute or point me to resources on managing open source contributions if you have any tips. Participation encouraged ;^D
