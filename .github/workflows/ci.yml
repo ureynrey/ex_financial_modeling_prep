@@ -1,0 +1,31 @@
+name: Continuous Integration
+
+on: push
+
+jobs:
+  test:
+    env:
+      MIX_ENV: test
+    runs-on: ubuntu-latest
+    services:
+      db:
+        image: postgres:latest
+        ports: ['5432:5432']
+        env:
+          POSTGRES_PASSWORD: postgres
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+    steps:
+      - uses: actions/checkout@v3
+      - uses: erlef/setup-beam@v1
+        with:
+          otp-version: '24.1'
+          elixir-version: '1.13.4'
+      - name: Fetch Dependencies
+        run: mix deps.get
+      - name: Run Test Suite
+        run: mix test
+      - name: Code analyzers
+        run: |
+          mix format --check-formatted
+          mix credo --strict
+          mix compile --warnings-as-errors
