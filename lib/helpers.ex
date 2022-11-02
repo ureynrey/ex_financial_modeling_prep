@@ -1,5 +1,4 @@
 defmodule ExFinancialModelingPrep.Helpers do
-
   @doc """
   Helper function to convert a map into specified defstruct
   """
