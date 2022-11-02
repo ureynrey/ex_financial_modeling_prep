@@ -1,7 +1,7 @@
 defmodule ExFinancialModelingPrep.Api.StockFundamentalTest do
-	use ExUnit.Case
-	doctest ExFinancialModelingPrep.Api.StockFundamental
-	alias ExFinancialModelingPrep.Api.StockFundamental
+  use ExUnit.Case
+  doctest ExFinancialModelingPrep.Api.StockFundamental
+  alias ExFinancialModelingPrep.Api.StockFundamental
   alias Fakes.Api.StockFundamental, as: Mock
 
   import Mox
@@ -16,5 +16,4 @@ defmodule ExFinancialModelingPrep.Api.StockFundamentalTest do
     expect(HTTPMock, :get, fn _ -> Mock.income_statement() end)
     StockFundamental.income_statement("AAPL")
   end
-
 end
