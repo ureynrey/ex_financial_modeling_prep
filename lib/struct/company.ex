@@ -1,4 +1,4 @@
-defmodule ExFinancialModelingPrep.Structs.Company do
+defmodule ExFinancialModelingPrep.Struct.Company do
   @moduledoc false
   @enforce_keys [:name, :symbol]
   @type t :: %__MODULE__{

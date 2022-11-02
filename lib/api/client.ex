@@ -25,8 +25,7 @@ defmodule ExFinancialModelingPrep.API.HTTPoison do
     end
   end
 
-  def process_url(url), do:
-        @endpoint <> url <> "&apikey=#{api_key()}"
+  def process_url(url), do: @endpoint <> url <> "&apikey=#{api_key()}"
 
   defp api_key, do: Application.fetch_env!(:ex_financial_modeling_prep, :auth_token)
 end

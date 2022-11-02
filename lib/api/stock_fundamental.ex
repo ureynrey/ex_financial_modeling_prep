@@ -3,7 +3,8 @@ defmodule ExFinancialModelingPrep.Api.StockFundamental do
 
   alias ExFinancialModelingPrep.Struct.{
     IncomeStatement,
-    BalanceSheetStatement
+    BalanceSheetStatement,
+    CashFlowStatement
   }
 
   alias ExFinancialModelingPrep.Helpers
@@ -37,7 +38,8 @@ defmodule ExFinancialModelingPrep.Api.StockFundamental do
     Client.get("/api/v3/income-statement/#{ticker}?limit=#{limit}&period=#{period}")
     |> case do
       {:ok, %{body: body, status_code: 200}} when is_list(body) ->
-        {:ok, Enum.map(body, &Helpers.resource_to_struct(&1, IncomeStatement))}
+        {:ok, body} = {:ok, Enum.map(body, &Helpers.resource_to_struct(&1, IncomeStatement))}
+        body
 
       {:error, error} ->
         {:error, error}
@@ -58,6 +60,25 @@ defmodule ExFinancialModelingPrep.Api.StockFundamental do
     |> case do
       {:ok, %{body: body, status_code: 200}} when is_list(body) ->
         {:ok, Enum.map(body, &Helpers.resource_to_struct(&1, BalanceSheetStatement))}
+
+      {:error, error} ->
+        {:error, error}
+    end
+  end
+
+  @doc """
+  """
+  @spec cash_flow_statement(String.t(), Keyword.t()) ::
+          {:ok, CashFlowStatement.t()}
+          | {:error, any()}
+  def cash_flow_statement(ticker, opts \\ []) do
+    limit = Keyword.get(opts, :limit, 120)
+    period = Keyword.get(opts, :period, "quarter")
+
+    Client.get("/api/v3/cash-flow-statement/#{ticker}?limit=#{limit}&period=#{period}")
+    |> case do
+      {:ok, %{body: body, status_code: 200}} when is_list(body) ->
+        {:ok, Enum.map(body, &Helpers.resource_to_struct(&1, CashFlowStatement))}
 
       {:error, error} ->
         {:error, error}
