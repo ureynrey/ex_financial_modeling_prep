@@ -1,9 +1,9 @@
 defmodule ExFinancialModelingPrep.API.MarketIndexes do
   @moduledoc false
   alias ExFinancialModelingPrep.Structs.Company
-  alias ExFinancialModelingPrep.API.Client
+  alias ExFinancialModelingPrep.Api.Client
 
-  @spec s_and_p_500_companies :: {:ok, list}
+  @spec s_and_p_500_companies :: {:ok, [Company.t()]}
   def s_and_p_500_companies do
     Client.get("api/v3/sp500_constituent?")
     |> case do

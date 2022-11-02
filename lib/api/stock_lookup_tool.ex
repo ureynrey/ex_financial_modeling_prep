@@ -1,7 +1,7 @@
-defmodule ExFinancialModelingPrep.API.StockLookUpTool do
+defmodule ExFinancialModelingPrep.Api.StockLookUpTool do
   @moduledoc false
   alias ExFinancialModelingPrep.Struct.Search
-  alias ExFinancialModelingPrep.API.Client
+  alias ExFinancialModelingPrep.Api.Client
 
   @spec search(String.t(), [tuple()]) :: {:ok, [Search.t()]} | {:error, HTTPoison.Error.t()}
   def search(ticker_or_company, opts \\ []) do

@@ -1,8 +1,7 @@
-defmodule ExFinancialModelingPrep.API.Client do
+defmodule ExFinancialModelingPrep.Api.Client do
   @spec get(String.t()) :: {:ok, any()} | {:error, any()}
   def get(url), do: Application.fetch_env!(:ex_financial_modeling_prep, :api_client).get(url)
 end
-
 
 defmodule ExFinancialModelingPrep.API.HTTPoison do
   use HTTPoison.Base
@@ -26,15 +25,8 @@ defmodule ExFinancialModelingPrep.API.HTTPoison do
     end
   end
 
-  def process_url(url) do
-    case ExRated.check_rate("financial_modeling_prep", 10_000, 150) do
-      {:ok, _count} ->
+  def process_url(url), do:
         @endpoint <> url <> "&apikey=#{api_key()}"
-
-      {:error, _limit} ->
-        Logger.info("Rate limit reached for Financial Modeling Prep")
-    end
-  end
 
   defp api_key, do: Application.fetch_env!(:ex_financial_modeling_prep, :auth_token)
 end

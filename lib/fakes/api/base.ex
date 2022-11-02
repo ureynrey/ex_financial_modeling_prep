@@ -1,4 +1,4 @@
-defmodule Fakes.API.Base do
+defmodule Fakes.Api.Base do
   @doc """
   Wraps body reponse in HTTPoison response
   """
