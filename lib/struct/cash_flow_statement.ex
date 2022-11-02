@@ -1,5 +1,5 @@
 defmodule ExFinancialModelingPrep.Struct.CashFlowStatement do
-  @moduledoc false
+
   use TypedStruct
 
   typedstruct do

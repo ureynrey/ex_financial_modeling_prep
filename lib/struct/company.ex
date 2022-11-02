@@ -1,5 +1,5 @@
 defmodule ExFinancialModelingPrep.Struct.Company do
-  @moduledoc false
+
   @enforce_keys [:name, :symbol]
   @type t :: %__MODULE__{
           cik: String.t(),

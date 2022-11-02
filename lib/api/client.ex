@@ -5,6 +5,7 @@ defmodule ExFinancialModelingPrep.Api.Client do
 end
 
 defmodule ExFinancialModelingPrep.API.HTTPoison do
+  @moduledoc false
   use HTTPoison.Base
   require Logger
   @endpoint "https://financialmodelingprep.com/"

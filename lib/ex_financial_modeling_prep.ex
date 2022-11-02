@@ -8,6 +8,7 @@ defmodule ExFinancialModelingPrep do
     StockFundamental
   }
 
+  @doc false
   defdelegate s_and_p_500_companies, to: MarketIndexes
 
   @doc delegate_to: {StockFundamental, :financial_statement_list, 1}

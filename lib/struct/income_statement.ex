@@ -1,5 +1,4 @@
 defmodule ExFinancialModelingPrep.Struct.IncomeStatement do
-  @moduledoc false
   use TypedStruct
 
   typedstruct do

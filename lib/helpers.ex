@@ -1,6 +1,6 @@
 defmodule ExFinancialModelingPrep.Helpers do
   @doc """
-  Helper function to convert a map into specified defstruct
+  Helper function to convert a map into specified defstruct when parsing through HTTP response with defined structs
   """
   @spec resource_to_struct(map, any) :: %{:__struct__ => any, optional(any) => any}
   def resource_to_struct(resource, struct) do
@@ -12,6 +12,11 @@ defmodule ExFinancialModelingPrep.Helpers do
     |> IO.inspect(label: :output)
   end
 
+
+  @doc """
+  Helper to quickly define types modules
+  """
+  @spec defined_struct_type(map) :: list
   def defined_struct_type(item) do
     item
     |> Map.to_list()
