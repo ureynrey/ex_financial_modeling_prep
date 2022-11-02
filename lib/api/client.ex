@@ -1,4 +1,5 @@
 defmodule ExFinancialModelingPrep.Api.Client do
+  @moduledoc false
   @spec get(String.t()) :: {:ok, any()} | {:error, any()}
   def get(url), do: Application.fetch_env!(:ex_financial_modeling_prep, :api_client).get(url)
 end
@@ -7,10 +8,6 @@ defmodule ExFinancialModelingPrep.API.HTTPoison do
   use HTTPoison.Base
   require Logger
   @endpoint "https://financialmodelingprep.com/"
-
-  @moduledoc """
-    API Client for https://site.financialmodelingprep.com/developer/docs/
-  """
 
   def process_response_body(body) when is_bitstring(body) and bit_size(body) > 0 do
     Jason.decode(body)

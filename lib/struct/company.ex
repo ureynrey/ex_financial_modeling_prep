@@ -7,7 +7,7 @@ defmodule ExFinancialModelingPrep.Struct.Company do
           sector: String.t(),
           symbol: String.t(),
           sub_sector: String.t(),
-          year_founded: Integer.t()
+          year_founded: integer()
         }
 
   defstruct [

@@ -9,8 +9,6 @@ defmodule ExFinancialModelingPrep.Api.StockFundamental do
 
   alias ExFinancialModelingPrep.Helpers
 
-  @moduledoc false
-
   @doc """
   https://site.financialmodelingprep.com/developer/docs/financial-statements-list-api/
   """
@@ -67,6 +65,7 @@ defmodule ExFinancialModelingPrep.Api.StockFundamental do
   end
 
   @doc """
+  Cash Flow Statement for the thingy
   """
   @spec cash_flow_statement(String.t(), Keyword.t()) ::
           {:ok, CashFlowStatement.t()}

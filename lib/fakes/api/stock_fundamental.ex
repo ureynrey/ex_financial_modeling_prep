@@ -1,4 +1,5 @@
 defmodule Fakes.Api.StockFundamental do
+  @moduledoc false
   alias Fakes.Api.Base
 
   def financial_statement_list() do
