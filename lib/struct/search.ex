@@ -1,5 +1,4 @@
 defmodule ExFinancialModelingPrep.Struct.Search do
-  @moduledoc false
   @enforce_keys [:symbol]
   @type t :: %__MODULE__{
           currency: String.t(),

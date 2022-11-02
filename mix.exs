@@ -8,7 +8,8 @@ defmodule ExFinancialModelingPrep.MixProject do
       elixir: "~> 1.13",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      docs: docs()
     ]
   end
 
@@ -26,12 +27,35 @@ defmodule ExFinancialModelingPrep.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:ex_doc, "~> 0.27", only: :dev, runtime: false},
       {:httpoison, "~> 1.8"},
       {:jason, "~> 1.3"},
       {:mox, "~> 1.0", only: :test},
       {:typed_struct, "~> 0.3.0"}
       # {:dep_from_hexpm, "~> 0.3.0"},
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
+    ]
+  end
+
+  defp docs do
+    [
+      name: "Ex Financial Modeling Prep",
+      source_url: "https://github.com/ghostkid130/ex_financial_modeling_prep",
+      extras: ["README.md"],
+      groups_for_modules: [
+        "Types": [
+          ExFinancialModelingPrep.Struct.BalanceSheetStatement,
+          ExFinancialModelingPrep.Struct.CashFlowStatement,
+          ExFinancialModelingPrep.Struct.Company,
+          ExFinancialModelingPrep.Struct.IncomeStatement,
+          ExFinancialModelingPrep.Struct.Search
+        ],
+        "API": [
+          ExFinancialModelingPrep.Api.StockFundamental,
+          ExFinancialModelingPrep.Api.StockLookUpTool
+        ]
+      ]
+
     ]
   end
 end

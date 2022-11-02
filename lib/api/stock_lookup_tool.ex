@@ -1,5 +1,4 @@
 defmodule ExFinancialModelingPrep.Api.StockLookUpTool do
-  @moduledoc false
   alias ExFinancialModelingPrep.Struct.Search
   alias ExFinancialModelingPrep.Api.Client
 
