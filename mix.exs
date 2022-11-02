@@ -15,7 +15,7 @@ defmodule ExFinancialModelingPrep.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      extra_applications: [:logger, :ex_rated]
+      extra_applications: [:logger]
     ]
   end
 
@@ -26,7 +26,6 @@ defmodule ExFinancialModelingPrep.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:ex_rated, "~> 2.0"},
       {:httpoison, "~> 1.8"},
       {:jason, "~> 1.3"},
       {:mox, "~> 1.0", only: :test},
