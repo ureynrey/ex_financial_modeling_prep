@@ -1,6 +1,5 @@
 defmodule ExFinancialModelingPrep.API.MarketIndexesTest do
   use ExUnit.Case
-  doctest ExFinancialModelingPrep.API.MarketIndexes
   alias ExFinancialModelingPrep.API.MarketIndexes
   import Mox
 
