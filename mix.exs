@@ -1,10 +1,15 @@
 defmodule ExFinancialModelingPrep.MixProject do
   use Mix.Project
 
+  @source_url "https://github.com/ghostkid130/ex_financial_modeling_prep"
+  @description "Financial Modeling Prep library for Elixir"
+
   def project do
     [
       app: :ex_financial_modeling_prep,
       version: "0.1.0",
+      description: @description,
+      package: package(),
       elixir: "~> 1.13",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
@@ -39,8 +44,8 @@ defmodule ExFinancialModelingPrep.MixProject do
 
   defp docs do
     [
-      name: "Ex Financial Modeling Prep",
-      source_url: "https://github.com/ghostkid130/ex_financial_modeling_prep",
+      name: "Financial Modeling Prep",
+      source_url: @source_url,
       extras: ["README.md"],
       groups_for_modules: [
         "Types": [
@@ -58,4 +63,16 @@ defmodule ExFinancialModelingPrep.MixProject do
 
     ]
   end
+
+  def package do
+    [
+      description: @description,
+      maintainers: ["Reynold Urena", "Dave Miner"],
+      licenses: ["MIT"],
+      links: %{
+        "Github" => @source_url
+      }
+    ]
+  end
+
 end
