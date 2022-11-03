@@ -1,4 +1,5 @@
-defmodule Structs.BalanceSheetStatement do
+defmodule ExFinancialModelingPrep.Struct.BalanceSheetStatement do
+
   use TypedStruct
 
   typedstruct do

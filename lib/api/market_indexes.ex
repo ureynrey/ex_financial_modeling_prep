@@ -1,6 +1,6 @@
 defmodule ExFinancialModelingPrep.API.MarketIndexes do
   @moduledoc false
-  alias ExFinancialModelingPrep.Structs.Company
+  alias ExFinancialModelingPrep.Struct.Company
   alias ExFinancialModelingPrep.Api.Client
 
   @spec s_and_p_500_companies :: {:ok, [Company.t()]}

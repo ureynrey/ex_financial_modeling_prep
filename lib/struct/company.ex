@@ -1,5 +1,5 @@
-defmodule ExFinancialModelingPrep.Structs.Company do
-  @moduledoc false
+defmodule ExFinancialModelingPrep.Struct.Company do
+
   @enforce_keys [:name, :symbol]
   @type t :: %__MODULE__{
           cik: String.t(),
@@ -7,7 +7,7 @@ defmodule ExFinancialModelingPrep.Structs.Company do
           sector: String.t(),
           symbol: String.t(),
           sub_sector: String.t(),
-          year_founded: Integer.t()
+          year_founded: integer()
         }
 
   defstruct [

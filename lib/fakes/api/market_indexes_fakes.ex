@@ -1,5 +1,6 @@
 defmodule ExFinancialModelingPrep.Fakes.API.MarketIndexes do
   alias Fakes.Api.Base
+  @moduledoc false
 
   @spec s_and_p_500_companies :: {:ok, HTTPoison.Response.t()}
   def s_and_p_500_companies() do
