@@ -1,6 +1,6 @@
-defmodule ExFinancialModelingPrep.API.MarketIndexesTest do
+defmodule ExFinancialModelingPrep.Api.MarketIndexesTest do
   use ExUnit.Case
-  alias ExFinancialModelingPrep.API.MarketIndexes
+  alias ExFinancialModelingPrep.Api.MarketIndexes
   import Mox
 
   alias ExFinancialModelingPrep.Fakes.API.MarketIndexes, as: Fake
@@ -10,7 +10,7 @@ defmodule ExFinancialModelingPrep.API.MarketIndexesTest do
 
     assert {:ok,
             [
-              %ExFinancialModelingPrep.Structs.Company{
+              %ExFinancialModelingPrep.Struct.Company{
                 cik: "0000066740",
                 name: "3M",
                 sector: "Industrials",
@@ -18,7 +18,7 @@ defmodule ExFinancialModelingPrep.API.MarketIndexesTest do
                 symbol: "MMM",
                 year_founded: 1902
               },
-              %ExFinancialModelingPrep.Structs.Company{
+              %ExFinancialModelingPrep.Struct.Company{
                 cik: "0000091142",
                 name: "A. O. Smith",
                 sector: "Industrials",
@@ -26,7 +26,7 @@ defmodule ExFinancialModelingPrep.API.MarketIndexesTest do
                 symbol: "AOS",
                 year_founded: 1916
               },
-              %ExFinancialModelingPrep.Structs.Company{
+              %ExFinancialModelingPrep.Struct.Company{
                 cik: "0000001800",
                 name: "Abbott",
                 sector: "Health Care",

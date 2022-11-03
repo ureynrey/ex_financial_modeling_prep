@@ -1,10 +1,13 @@
 defmodule ExFinancialModelingPrep.Api.StockFundamental do
+  @moduledoc """
+  [Stock Fundamental API](https://site.financialmodelingprep.com/developer/docs/#Financial-Statements-List)
+  """
   alias ExFinancialModelingPrep.Api.Client
 
   alias ExFinancialModelingPrep.Struct.{
-    IncomeStatement,
     BalanceSheetStatement,
-    CashFlowStatement
+    CashFlowStatement,
+    IncomeStatement
   }
 
   alias ExFinancialModelingPrep.Helpers
@@ -12,7 +15,7 @@ defmodule ExFinancialModelingPrep.Api.StockFundamental do
   @doc """
   https://site.financialmodelingprep.com/developer/docs/financial-statements-list-api/
   """
-  def financial_statement_list() do
+  def financial_statement_list do
     Client.get("/api/v3/financial-statement-symbol-lists?")
     |> case do
       {:ok, %{body: body, status_code: 200}} when is_list(body) ->

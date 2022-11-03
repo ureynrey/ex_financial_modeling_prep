@@ -2,7 +2,7 @@ defmodule Fakes.Api.StockFundamental do
   @moduledoc false
   alias Fakes.Api.Base
 
-  def financial_statement_list() do
+  def financial_statement_list do
     Base.ok_http_response([
       "ETH",
       "GOGN",
@@ -35,7 +35,7 @@ defmodule Fakes.Api.StockFundamental do
     ])
   end
 
-  def income_statement() do
+  def income_statement do
     Base.ok_http_response([
       %{
         "date" => "2022-09-24",
@@ -124,7 +124,7 @@ defmodule Fakes.Api.StockFundamental do
     ])
   end
 
-  def balance_sheet_statement() do
+  def balance_sheet_statement do
     Base.ok_http_response([
       %{
         "date" => "2022-09-24",
