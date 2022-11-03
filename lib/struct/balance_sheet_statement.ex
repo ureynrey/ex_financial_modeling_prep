@@ -1,5 +1,7 @@
 defmodule ExFinancialModelingPrep.Struct.BalanceSheetStatement do
-
+  @moduledoc """
+  Type: Balance sheet statement
+  """
   use TypedStruct
 
   typedstruct do

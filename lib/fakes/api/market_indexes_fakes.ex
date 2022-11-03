@@ -3,7 +3,7 @@ defmodule ExFinancialModelingPrep.Fakes.API.MarketIndexes do
   @moduledoc false
 
   @spec s_and_p_500_companies :: {:ok, HTTPoison.Response.t()}
-  def s_and_p_500_companies() do
+  def s_and_p_500_companies do
     Base.ok_http_response([
       %{
         "cik" => "0000066740",

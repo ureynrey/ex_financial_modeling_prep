@@ -32,6 +32,7 @@ defmodule ExFinancialModelingPrep.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
       {:ex_doc, "~> 0.27", only: :dev, runtime: false},
       {:httpoison, "~> 1.8"},
       {:jason, "~> 1.3"},
@@ -48,19 +49,18 @@ defmodule ExFinancialModelingPrep.MixProject do
       source_url: @source_url,
       extras: ["README.md"],
       groups_for_modules: [
-        "Types": [
+        Types: [
           ExFinancialModelingPrep.Struct.BalanceSheetStatement,
           ExFinancialModelingPrep.Struct.CashFlowStatement,
           ExFinancialModelingPrep.Struct.Company,
           ExFinancialModelingPrep.Struct.IncomeStatement,
           ExFinancialModelingPrep.Struct.Search
         ],
-        "API": [
+        API: [
           ExFinancialModelingPrep.Api.StockFundamental,
           ExFinancialModelingPrep.Api.StockLookUpTool
         ]
       ]
-
     ]
   end
 
@@ -74,5 +74,4 @@ defmodule ExFinancialModelingPrep.MixProject do
       }
     ]
   end
-
 end

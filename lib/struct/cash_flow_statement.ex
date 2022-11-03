@@ -1,5 +1,7 @@
 defmodule ExFinancialModelingPrep.Struct.CashFlowStatement do
-
+  @moduledoc """
+  Type: Cash flow statement
+  """
   use TypedStruct
 
   typedstruct do

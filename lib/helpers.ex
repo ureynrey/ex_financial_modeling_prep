@@ -1,4 +1,8 @@
 defmodule ExFinancialModelingPrep.Helpers do
+  @moduledoc """
+  Assist with assigning and defining type
+  """
+
   @doc """
   Helper function to convert a map into specified defstruct when parsing through HTTP response with defined structs
   """
@@ -9,9 +13,7 @@ defmodule ExFinancialModelingPrep.Helpers do
     |> Enum.map(fn {key, value} -> {String.to_existing_atom(Macro.underscore(key)), value} end)
     |> Enum.into(%{})
     |> Map.put(:__struct__, struct)
-    |> IO.inspect(label: :output)
   end
-
 
   @doc """
   Helper to quickly define types modules
