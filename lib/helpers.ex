@@ -10,7 +10,7 @@ defmodule ExFinancialModelingPrep.Helpers do
   def resource_to_struct(resource, struct) do
     resource
     |> Map.to_list()
-    |> Enum.map(fn {key, value} -> {String.to_existing_atom(Macro.underscore(key)), value} end)
+    |> Enum.map(fn {key, value} -> {String.to_existing_atom(Macro.underscore(key)), parse_binary(value)} end)
     |> Enum.into(%{})
     |> Map.put(:__struct__, struct)
   end
@@ -42,22 +42,33 @@ defmodule ExFinancialModelingPrep.Helpers do
 
   @doc """
   Parses Binary string to appropriate type
+
+  ## Examples
+      iex> ExFinancialModelingPrep.Helpers.parse_binary("2022-10-31")
+      ~D[2022-10-31]
+
+      iex> ExFinancialModelingPrep.Helpers.parse_binary("2022-10-27 18:01:14")
+      ~U[2022-10-27 18:01:14Z]
+
+      iex> ExFinancialModelingPrep.Helpers.parse_binary("AAPL")
+      "AAPL"
   """
-  @spec parse_binary(binary) :: String.t() | DateTime.t() | Date.t()
+  @spec parse_binary(binary) :: String.t() | DateTime.t() | Date.t() | float() | integer()
   def parse_binary(value) do
     define_string(value)
     |> case do
       :date -> to_date(value)
       :date_time -> to_date_time(value)
       :string -> value
+      value -> value
     end
   end
 
   @doc """
   Informs string type :date, :date_time, :string
   """
-  @spec define_string(binary) :: :date | :date_time | :string
-  def define_string(string) do
+  @spec define_string(binary) :: :date | :date_time | :string | float() | integer()
+  def define_string(string) when is_binary(string) do
     cond do
       Regex.match?(~r/^(([0-9]{4})-([0-9]{2})-([0-9]{2}))$/, string) -> :date
       Regex.match?(~r/^(([0-9]{4})-([0-9]{2})-([0-9]{2})) ([0-9]{2}):([0-9]{2}):([0-9]{2})$/, string) -> :date_time
@@ -65,22 +76,21 @@ defmodule ExFinancialModelingPrep.Helpers do
     end
   end
 
-  @doc """
-  Converts Financial Modeling Prep date string to Date.t()
-  """
+  def define_string(value), do: value
+
+
+  # Converts Financial Modeling Prep date string to Date.t()
   @spec to_date(binary) :: Date.t()
-  def to_date(string) do
+  defp to_date(string) do
     string
     |> String.split("-")
     |> Enum.map(&String.to_integer/1)
     |> then(fn [year, month, day] -> Date.new!(year, month, day) end)
   end
 
-  @doc """
-  Converts Financial Modeling Prep date string to DateTime.t()
-  """
+  # Converts Financial Modeling Prep date string to DateTime.t()
   @spec to_date_time(binary) :: DateTime.t()
-  def to_date_time(string) do
+  defp to_date_time(string) do
     [date_string, time] = String.split(string, " ")
 
     [hour, min, sec] =
