@@ -1,6 +1,6 @@
 defmodule ExFinancialModelingPrep.Struct.BalanceSheetStatement do
   @moduledoc """
-  Type: Balance sheet statement
+  Struct: BalanceSheetStatement
   """
   use TypedStruct
 
@@ -10,7 +10,7 @@ defmodule ExFinancialModelingPrep.Struct.BalanceSheetStatement do
     field(:other_current_liabilities, integer())
     field(:property_plant_equipment_net, integer())
     field(:tax_payables, float())
-    field(:accepted_date, String.t())
+    field(:accepted_date, DateTime.t())
     field(:goodwill, float())
     field(:other_liabilities, float())
     field(:goodwill_and_intangible_assets, float())
@@ -35,7 +35,7 @@ defmodule ExFinancialModelingPrep.Struct.BalanceSheetStatement do
     field(:final_link, String.t())
     field(:capital_lease_obligations, float())
     field(:tax_assets, float())
-    field(:filling_date, String.t())
+    field(:filling_date, Date.t())
     field(:common_stock, integer())
     field(:retained_earnings, integer())
     field(:net_debt, integer())
@@ -49,7 +49,7 @@ defmodule ExFinancialModelingPrep.Struct.BalanceSheetStatement do
     field(:calendar_year, String.t())
     field(:other_assets, float())
     field(:intangible_assets, float())
-    field(:date, String.t())
+    field(:date, Date.t())
     field(:deferred_tax_liabilities_non_current, float())
     field(:preferred_stock, integer())
     field(:short_term_investments, integer())
