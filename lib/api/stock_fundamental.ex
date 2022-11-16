@@ -65,7 +65,13 @@ defmodule ExFinancialModelingPrep.Api.StockFundamental do
     limit = Keyword.get(opts, :limit, "120")
     period = Keyword.get(opts, :period, "quarter")
 
-    Client.get("/api/v3/balance-sheet-statement/#{ticker}?limit=#{limit}&period=#{period}")
+    query =
+      %{"limit" => limit, "period" => period}
+      |> URI.encode_query()
+
+    %URI{ path: "/v3/balance-sheet-statement/#{ticker}", query: query }
+    |> URI.to_string()
+    |> Client.get()
     |> case do
       {:ok, %{body: body, status_code: 200}} when is_list(body) ->
         {:ok, Enum.map(body, &Helpers.resource_to_struct(&1, BalanceSheetStatement))}
@@ -85,7 +91,7 @@ defmodule ExFinancialModelingPrep.Api.StockFundamental do
     limit = Keyword.get(opts, :limit, 120)
     period = Keyword.get(opts, :period, "quarter")
 
-    Client.get("/api/v3/cash-flow-statement/#{ticker}?limit=#{limit}&period=#{period}")
+    Client.get("/v3/cash-flow-statement/#{ticker}?limit=#{limit}&period=#{period}")
     |> case do
       {:ok, %{body: body, status_code: 200}} when is_list(body) ->
         {:ok, Enum.map(body, &Helpers.resource_to_struct(&1, CashFlowStatement))}
