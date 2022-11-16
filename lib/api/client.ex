@@ -26,14 +26,16 @@ defmodule ExFinancialModelingPrep.API.HTTPoison do
   def process_url(stringified_uri) do
     uri = URI.parse(stringified_uri)
 
-    api_key = "apikey=#{api_key()}"
-
-    package_item_in_query = fn
-      nil, default -> default
-      string, default -> string <> default
+    package_api_key = fn
+      nil -> "apikey=#{api_key()}"
+      uri_query ->
+        uri_query
+        |> URI.decode_query()
+        |> Map.put("apikey", api_key())
+        |> URI.encode_query()
     end
 
-    %{uri | host: @base_url, scheme: "https", query: package_item_in_query.(uri.query, api_key)}
+    %{uri | host: @base_url, scheme: "https", query: package_api_key.(uri.query)}
     |> URI.to_string()
   end
 
