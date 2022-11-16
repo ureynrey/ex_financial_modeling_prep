@@ -27,7 +27,9 @@ defmodule ExFinancialModelingPrep.API.HTTPoison do
     uri = URI.parse(stringified_uri)
 
     package_api_key = fn
-      nil -> "apikey=#{api_key()}"
+      nil ->
+        "apikey=#{api_key()}"
+
       uri_query ->
         uri_query
         |> URI.decode_query()

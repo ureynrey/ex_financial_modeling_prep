@@ -42,7 +42,7 @@ defmodule ExFinancialModelingPrep.Api.StockFundamental do
       %{"limit" => limit, "period" => period}
       |> URI.encode_query()
 
-    %URI{ path: "/v3/income-statement/#{ticker}", query: query }
+    %URI{path: "/v3/income-statement/#{ticker}", query: query}
     |> URI.to_string()
     |> Client.get()
     |> case do
@@ -69,7 +69,7 @@ defmodule ExFinancialModelingPrep.Api.StockFundamental do
       %{"limit" => limit, "period" => period}
       |> URI.encode_query()
 
-    %URI{ path: "/v3/balance-sheet-statement/#{ticker}", query: query }
+    %URI{path: "/v3/balance-sheet-statement/#{ticker}", query: query}
     |> URI.to_string()
     |> Client.get()
     |> case do
