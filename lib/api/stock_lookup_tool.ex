@@ -5,11 +5,15 @@ defmodule ExFinancialModelingPrep.Api.StockLookUpTool do
   alias ExFinancialModelingPrep.Api.Client
   alias ExFinancialModelingPrep.Struct.Search
 
-  @spec search(String.t(), [tuple()]) :: {:ok, [Search.t()]} | {:error, HTTPoison.Error.t()}
-  def search(ticker_or_company, opts \\ []) do
-    Enum.into(opts ++ [query: ticker_or_company], %{})
-    |> URI.encode_query()
-    |> (&Client.get("api/v3/search?" <> &1)).()
+  @spec search(String.t()) :: {:ok, [Search.t()]} | {:error, HTTPoison.Error.t()}
+  def search(ticker_or_company) do
+    query =
+      %{"query" => ticker_or_company}
+      |> URI.encode_query()
+
+    %URI{path: "/v3/search", query: query}
+    |> URI.to_string()
+    |> Client.get()
     |> case do
       {:ok, %{status_code: 200, body: companies}} ->
         Enum.map(companies, fn company ->
