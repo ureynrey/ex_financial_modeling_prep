@@ -9,7 +9,8 @@ defmodule ExFinancialModelingPrep.Api.StockLookUpTool do
     Search via ticker and company name. Values for exchange options are:
       ETF | MUTUAL_FUND | COMMODITY | INDEX | CRYPTO | FOREX | TSX | AMEX | NASDAQ | NYSE | EURONEXT | XETRA | NSE | LSE
   """
-  @spec search(String.t(), [exchange: String.t()]) :: {:ok, [Search.t()]} | {:error, HTTPoison.Error.t()}
+  @spec search(String.t(), exchange: String.t()) ::
+          {:ok, [Search.t()]} | {:error, HTTPoison.Error.t()}
   def search(ticker_or_company, opts) do
     query =
       %{"query" => ticker_or_company}

@@ -18,6 +18,6 @@ defmodule ExFinancialModelingPrep.Application do
       ExFinancialModelingPrep.Struct.BalanceSheetStatement,
       ExFinancialModelingPrep.Struct.Search
     ]
-    |> Enum.each(& Code.ensure_loaded &1)
+    |> Enum.each(&Code.ensure_loaded(&1))
   end
 end
