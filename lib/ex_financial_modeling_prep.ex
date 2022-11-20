@@ -5,7 +5,8 @@ defmodule ExFinancialModelingPrep do
 
   alias ExFinancialModelingPrep.Api.{
     MarketIndexes,
-    StockFundamental
+    StockFundamental,
+    StockLookUpTool
   }
 
   @doc false
@@ -22,4 +23,7 @@ defmodule ExFinancialModelingPrep do
 
   @doc delegate_to: {StockFundamental, :cash_flow_statement, 2}
   defdelegate cash_flow_statement(ticker, opts), to: StockFundamental
+
+  @doc delegate_to: {StockLookUpTool, :search, 2}
+  defdelegate search(ticker_or_company, opts \\ []), to: StockLookUpTool
 end
