@@ -14,7 +14,14 @@ defmodule ExFinancialModelingPrep.MixProject do
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       deps: deps(),
-      docs: docs()
+      docs: docs(),
+      test_coverage: [tool: ExCoveralls],
+      preferred_cli_env: [
+        coveralls: :test,
+        "coveralls.detail": :test,
+        "coveralls.post": :test,
+        "coveralls.html": :test
+      ]
     ]
   end
 
@@ -34,6 +41,7 @@ defmodule ExFinancialModelingPrep.MixProject do
   defp deps do
     [
       {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
+      {:excoveralls, "~> 0.10", only: :test},
       {:ex_doc, "~> 0.27", only: :dev, runtime: false},
       {:httpoison, "~> 1.8"},
       {:jason, "~> 1.3"},
