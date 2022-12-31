@@ -4,26 +4,41 @@ defmodule ExFinancialModelingPrep do
   """
 
   alias ExFinancialModelingPrep.Api.{
-    MarketIndexes,
     StockFundamental,
+    # MarketIndexes,
     StockLookUpTool
   }
 
+  @callback income_statement(binary(), Keyword.t()) :: {:ok, IncomeStatement.t()} | {:error, any()}
+  @callback financial_statement_list() :: {:ok | :error, any()}
+  @callback balance_sheet_statement(binary(), Keyword.t()) :: {:ok | :error, any()}
+  @callback cash_flow_statement(binary(), Keyword.t()) :: {:ok | :error, any()}
+  @callback search(binary(), Keyword.t()) :: {:ok | :error, any()}
+
   @doc false
-  defdelegate s_and_p_500_companies, to: MarketIndexes
+  # defdelegate s_and_p_500_companies, to: MarketIndexes
 
   @doc delegate_to: {StockFundamental, :financial_statement_list, 0}
-  defdelegate financial_statement_list, to: StockFundamental
+  def financial_statement_list() do
+    impl(:stock_fundamental).financial_statement_list()
+  end
 
   @doc delegate_to: {StockFundamental, :income_statement, 2}
-  defdelegate income_statement(ticker, opts), to: StockFundamental
+  def income_statement(ticker, opts), do:
+    impl(:stock_fundamental).income_statement(ticker, opts)
 
   @doc delegate_to: {StockFundamental, :balance_sheet_statement, 2}
-  defdelegate balance_sheet_statement(ticker, opts), to: StockFundamental
+  def balance_sheet_statement(ticker, opts \\ []), do:
+    impl(:stock_fundamental).balance_sheet_statement(ticker, opts)
 
   @doc delegate_to: {StockFundamental, :cash_flow_statement, 2}
-  defdelegate cash_flow_statement(ticker, opts), to: StockFundamental
+  def cash_flow_statement(ticker, opts \\ []), do:
+    impl(:stock_fundamental).cash_flow_statement(ticker, opts)
 
   @doc delegate_to: {StockLookUpTool, :search, 2}
-  defdelegate search(ticker_or_company, opts \\ []), to: StockLookUpTool
+  def search(ticker_or_company, opts \\ []), do:
+    impl(:stock_lookup_tool).search(ticker_or_company, opts)
+
+  defp impl(module), do:
+    Application.get_env(:ex_financial_modeling_prep, :impl)[module]
 end
