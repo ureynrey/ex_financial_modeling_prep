@@ -14,6 +14,8 @@ defmodule ExFinancialModelingPrep.Api.StockFundamentalTest do
 
   test "income_statement/2" do
     expect(HTTPMock, :get, fn _ -> Mock.income_statement() end)
-    StockFundamental.income_statement("AAPL")
+    assert {:ok, list} = StockFundamental.income_statement("AAPL")
+
+    Enum.map(list, fn item -> assert item.__struct__ == ExFinancialModelingPrep.Struct.IncomeStatement end)
   end
 end

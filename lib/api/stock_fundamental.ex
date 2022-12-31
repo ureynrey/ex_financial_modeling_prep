@@ -47,8 +47,7 @@ defmodule ExFinancialModelingPrep.Api.StockFundamental do
     |> Client.get()
     |> case do
       {:ok, %{body: body, status_code: 200}} when is_list(body) ->
-        {:ok, body} = {:ok, Enum.map(body, &Helpers.resource_to_struct(&1, IncomeStatement))}
-        body
+        {:ok, Enum.map(body, &Helpers.resource_to_struct(&1, IncomeStatement))}
 
       {:error, error} ->
         {:error, error}
