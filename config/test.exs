@@ -5,5 +5,6 @@ config :ex_financial_modeling_prep, :auth_token, ""
 config :ex_financial_modeling_prep, api_client: HTTPMock
 
 config :ex_financial_modeling_prep, :impl,
+  market_indexes: MockExFinancialModelingPrep,
   stock_fundamental: MockExFinancialModelingPrep,
   stock_lookup_tool: MockExFinancialModelingPrep

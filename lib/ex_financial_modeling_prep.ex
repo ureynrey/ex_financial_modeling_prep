@@ -5,23 +5,22 @@ defmodule ExFinancialModelingPrep do
 
   alias ExFinancialModelingPrep.Api.{
     StockFundamental,
-    # MarketIndexes,
     StockLookUpTool
   }
 
+  @callback s_and_p_500_companies() :: {:ok | :error, any()}
   @callback income_statement(binary(), Keyword.t()) :: {:ok, IncomeStatement.t()} | {:error, any()}
   @callback financial_statement_list() :: {:ok | :error, any()}
   @callback balance_sheet_statement(binary(), Keyword.t()) :: {:ok | :error, any()}
   @callback cash_flow_statement(binary(), Keyword.t()) :: {:ok | :error, any()}
   @callback search(binary(), Keyword.t()) :: {:ok | :error, any()}
 
-  @doc false
-  # defdelegate s_and_p_500_companies, to: MarketIndexes
+  def s_and_p_500_companies, do:
+    impl(:market_indexes).s_and_p_500_companies()
 
   @doc delegate_to: {StockFundamental, :financial_statement_list, 0}
-  def financial_statement_list() do
+  def financial_statement_list(), do:
     impl(:stock_fundamental).financial_statement_list()
-  end
 
   @doc delegate_to: {StockFundamental, :income_statement, 2}
   def income_statement(ticker, opts), do:

@@ -41,5 +41,12 @@ defmodule ExFinancialModelingPrepTest do
       ExFinancialModelingPrep.search("AMD")
   end
 
+  test "Mox: s_and_p_500_companies/0" do
+    expect(MockExFinancialModelingPrep, :s_and_p_500_companies, fn -> {:ok, :s_and_p_500_companies} end)
+
+    assert {:ok, :s_and_p_500_companies} =
+      ExFinancialModelingPrep.s_and_p_500_companies()
+  end
+
 
 end
