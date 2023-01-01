@@ -19,5 +19,13 @@ Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_do
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at <https://hexdocs.pm/ex_financial_modeling_prep>.
 
+## Testing:
+This library leverages mocks using [Mox's](https://github.com/dashbitco/mox) to mock API calls to financial modeling prep. Consuming libraries leveraging looking to utilize this API client library can also leverage Mox to mock api calls. 
+
+1. Add Mock to test_helper.ex file 
+```
+Mox.defmock(MockExFinancialModelingPrep, for: ExFinancialModelingPrep)
+```
+
 ## Author note:
 - My first open source project. Feel free to contribute or point me to resources on managing open source contributions if you have any tips. Participation encouraged ;^D
