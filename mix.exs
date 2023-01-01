@@ -7,7 +7,7 @@ defmodule ExFinancialModelingPrep.MixProject do
   def project do
     [
       app: :ex_financial_modeling_prep,
-      version: "0.1.2",
+      version: "0.1.3",
       description: @description,
       package: package(),
       elixir: "~> 1.13",
