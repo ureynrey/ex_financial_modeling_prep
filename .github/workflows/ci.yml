@@ -6,7 +6,7 @@ jobs:
   test:
     env:
       MIX_ENV: test
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     services:
       db:
         image: postgres:latest
