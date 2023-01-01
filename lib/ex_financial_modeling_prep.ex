@@ -19,7 +19,7 @@ defmodule ExFinancialModelingPrep do
   def s_and_p_500_companies, do: impl(:market_indexes).s_and_p_500_companies()
 
   @doc delegate_to: {StockFundamental, :financial_statement_list, 0}
-  def financial_statement_list(), do: impl(:stock_fundamental).financial_statement_list()
+  def financial_statement_list, do: impl(:stock_fundamental).financial_statement_list()
 
   @doc delegate_to: {StockFundamental, :income_statement, 2}
   def income_statement(ticker, opts), do: impl(:stock_fundamental).income_statement(ticker, opts)
