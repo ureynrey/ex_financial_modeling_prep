@@ -43,6 +43,7 @@ defmodule ExFinancialModelingPrep.MixProject do
       {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
       {:excoveralls, "~> 0.10", only: :test},
       {:ex_doc, "~> 0.27", only: :dev, runtime: false},
+      {:ex_machina, "~> 2.7.0", only: :test},
       {:httpoison, "~> 1.8"},
       {:jason, "~> 1.3"},
       {:mox, "~> 1.0", only: :test},
