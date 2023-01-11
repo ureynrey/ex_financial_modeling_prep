@@ -12,10 +12,11 @@ defmodule ExFinancialModelingPrep.Application do
   # are ready to be consumes on a `String.to_exisiting_atom/1`
   defp ensure_structs_loaded do
     [
+      ExFinancialModelingPrep.Struct.BalanceSheetStatement,
       ExFinancialModelingPrep.Struct.CashFlowStatement,
       ExFinancialModelingPrep.Struct.Company,
       ExFinancialModelingPrep.Struct.IncomeStatement,
-      ExFinancialModelingPrep.Struct.BalanceSheetStatement,
+      ExFinancialModelingPrep.Struct.KeyExecutives,
       ExFinancialModelingPrep.Struct.Search
     ]
     |> Enum.each(&Code.ensure_loaded(&1))
