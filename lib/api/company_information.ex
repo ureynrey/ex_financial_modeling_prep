@@ -1,6 +1,6 @@
-defmodule ExFinancialModelingPrep.Api.KeyExecutives do
+defmodule ExFinancialModelingPrep.Api.CompanyInformation do
   @moduledoc """
-  [key Executives API https://site.financialmodelingprep.com/developer/docs/#Key-Executives]
+  [Key Executives API](https://site.financialmodelingprep.com/developer/docs/#Key-Executives)
   """
   alias ExFinancialModelingPrep.Api.Client
   alias ExFinancialModelingPrep.Helpers
@@ -8,7 +8,7 @@ defmodule ExFinancialModelingPrep.Api.KeyExecutives do
   alias ExFinancialModelingPrep.Struct.KeyExecutives
 
   @spec key_executives(String.t()) ::
-    {:ok, KeyExecutives.t()} |
+    {:ok, [KeyExecutives.t()]} |
     {:error, any()}
   def key_executives(ticker) do
     %URI{path: "v3/key-executives/#{ticker}"}
