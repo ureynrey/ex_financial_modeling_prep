@@ -5,11 +5,14 @@ defmodule ExFinancialModelingPrep.Api.CompanyInformation do
   alias ExFinancialModelingPrep.Api.Client
   alias ExFinancialModelingPrep.Helpers
 
-  alias ExFinancialModelingPrep.Struct.KeyExecutives
+  alias ExFinancialModelingPrep.Struct.{
+    KeyExecutives,
+    CompanyProfile
+  }
 
   @spec key_executives(String.t()) ::
-    {:ok, [KeyExecutives.t()]} |
-    {:error, any()}
+          {:ok, [KeyExecutives.t()]}
+          | {:error, any()}
   def key_executives(ticker) do
     %URI{path: "v3/key-executives/#{ticker}"}
     |> URI.to_string()
@@ -17,6 +20,23 @@ defmodule ExFinancialModelingPrep.Api.CompanyInformation do
     |> case do
       {:ok, %{body: body, status_code: 200}} when is_list(body) ->
         {:ok, Enum.map(body, &Helpers.resource_to_struct(&1, KeyExecutives))}
+
+      {:error, error} ->
+        {:error, error}
+    end
+  end
+
+  @spec company_profile(String.t()) ::
+          {:ok, [ComapnyProfile.t()]}
+          | {:error, any()}
+  def company_profile(ticker) do
+    %URI{path: "v3/profile/#{ticker}"}
+    |> URI.to_string()
+    |> Client.get()
+    |> case do
+      {:ok, %{body: body, status_code: 200}} when is_list(body) ->
+        # {:ok, body}
+        {:ok, Enum.map(body, &Helpers.resource_to_struct(&1, CompanyProfile))}
 
       {:error, error} ->
         {:error, error}

@@ -16,5 +16,4 @@ defmodule ExFinancialModelingPrep.Api.KeyExecutivesTest do
     expect(HTTPMock, :get, fn _ -> {:error, :list_is_empty} end)
     assert {:error, reason} = CompanyInformation.key_executives("APPL")
   end
-
 end

@@ -3,8 +3,8 @@ defmodule ExFinancialModelingPrep do
   Documentation for `ExFinancialModelingPrep`.
   """
 
-
   alias ExFinancialModelingPrep.Struct.KeyExecutives
+
   alias ExFinancialModelingPrep.Api.{
     StockFundamental,
     StockLookUpTool,
@@ -13,7 +13,7 @@ defmodule ExFinancialModelingPrep do
 
   @callback s_and_p_500_companies() :: {:ok | :error, any()}
   @callback income_statement(binary(), Keyword.t()) ::
-  {:ok, IncomeStatement.t()} | {:error, any()}
+              {:ok, IncomeStatement.t()} | {:error, any()}
   @callback financial_statement_list() :: {:ok | :error, any()}
   @callback balance_sheet_statement(binary(), Keyword.t()) :: {:ok | :error, any()}
   @callback cash_flow_statement(binary(), Keyword.t()) :: {:ok | :error, any()}

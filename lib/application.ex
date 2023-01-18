@@ -15,6 +15,7 @@ defmodule ExFinancialModelingPrep.Application do
       ExFinancialModelingPrep.Struct.BalanceSheetStatement,
       ExFinancialModelingPrep.Struct.CashFlowStatement,
       ExFinancialModelingPrep.Struct.Company,
+      ExFinancialModelingPrep.Struct.CompanyProfile,
       ExFinancialModelingPrep.Struct.IncomeStatement,
       ExFinancialModelingPrep.Struct.KeyExecutives,
       ExFinancialModelingPrep.Struct.Search
