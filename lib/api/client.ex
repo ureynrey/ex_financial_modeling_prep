@@ -23,6 +23,9 @@ defmodule ExFinancialModelingPrep.API.HTTPoison do
     end
   end
 
+  def process_response_body(body) when not is_bitstring(body) or bit_size(body) == 0,
+    do: :no_results
+
   def process_url(stringified_uri) do
     uri = URI.parse(stringified_uri)
 

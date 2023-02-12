@@ -1,5 +1,6 @@
 defmodule ExFinancialModelingPrep.Fakes.Api.CompanyProfile do
   alias Fakes.Api.Base
+  @moduledoc false
 
   @spec company_profile :: {:ok, HTTPoison.Response.t()}
   def company_profile do

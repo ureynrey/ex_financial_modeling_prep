@@ -8,8 +8,7 @@ defmodule ExFinancialModelingPrep do
   alias ExFinancialModelingPrep.Api.{
     CompanyInformation,
     StockFundamental,
-    StockLookUpTool,
-    CompanyInformation
+    StockLookUpTool
   }
 
   @callback s_and_p_500_companies() :: {:ok | :error, any()}
@@ -37,6 +36,10 @@ defmodule ExFinancialModelingPrep do
   @doc delegate_to: {StockFundamental, :cash_flow_statement, 2}
   def cash_flow_statement(ticker, opts \\ []),
     do: impl(:stock_fundamental).cash_flow_statement(ticker, opts)
+
+  @doc delegate_to: {CompanyInformation, :company_profile, 1}
+  def company_profile(ticker),
+    do: impl(:company_information).company_profile(ticker)
 
   @doc delegate_to: {StockLookUpTool, :search, 2}
   @spec search(any, any) :: any
