@@ -1,5 +1,6 @@
 defmodule ExFinancialModelingPrep.Fakes.Api.KeyExecutives do
   alias Fakes.Api.Base
+  @moduledoc false
 
   @spec key_executives :: {:ok, HTTPoison.Response.t()}
   def key_executives do

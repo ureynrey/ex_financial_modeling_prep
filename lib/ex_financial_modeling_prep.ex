@@ -6,9 +6,9 @@ defmodule ExFinancialModelingPrep do
   alias ExFinancialModelingPrep.Struct.KeyExecutives
 
   alias ExFinancialModelingPrep.Api.{
+    CompanyInformation,
     StockFundamental,
-    StockLookUpTool,
-    CompanyInformation
+    StockLookUpTool
   }
 
   @callback s_and_p_500_companies() :: {:ok | :error, any()}

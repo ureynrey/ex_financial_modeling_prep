@@ -1,8 +1,8 @@
 defmodule ExFinancialModelingPrep.Api.KeyExecutivesTest do
   use ExUnit.Case
   alias ExFinancialModelingPrep.Api.CompanyInformation
-  alias ExFinancialModelingPrep.Struct
   alias ExFinancialModelingPrep.Fakes.Api.KeyExecutives, as: Mock
+  alias ExFinancialModelingPrep.Struct
 
   import Mox
 
