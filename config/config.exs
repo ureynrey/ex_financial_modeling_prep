@@ -1,6 +1,7 @@
 import Config
 
 config :ex_financial_modeling_prep, :impl,
+  company_information: ExFinancialModelingPrep.Api.CompanyInformation,
   market_indexes: ExFinancialModelingPrep.Api.MarketIndexes,
   stock_fundamental: ExFinancialModelingPrep.Api.StockFundamental,
   stock_lookup_tool: ExFinancialModelingPrep.Api.StockLookUpTool

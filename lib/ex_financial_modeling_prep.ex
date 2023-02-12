@@ -37,6 +37,10 @@ defmodule ExFinancialModelingPrep do
   def cash_flow_statement(ticker, opts \\ []),
     do: impl(:stock_fundamental).cash_flow_statement(ticker, opts)
 
+  @doc delegate_to: {CompanyInformation, :company_profile, 1}
+  def company_profile(ticker),
+    do: impl(:company_information).company_profile(ticker)
+
   @doc delegate_to: {StockLookUpTool, :search, 2}
   @spec search(any, any) :: any
   def search(ticker_or_company, opts \\ []),
