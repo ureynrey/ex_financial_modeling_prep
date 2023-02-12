@@ -20,7 +20,7 @@ defmodule ExFinancialModelingPrep.Helpers do
   @doc """
   DO NOT USE:
   Creates a struct file in root directory for ease of development and speeding up process.
-  Should be yetted after project is completed.
+  Should be yeeted after project is completed.
   """
   def create_struct_file(item, module_name) do
     File.write(
