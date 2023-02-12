@@ -8,8 +8,8 @@ defmodule ExFinancialModelingPrep.Api.CompanyInformation do
   alias ExFinancialModelingPrep.Struct.KeyExecutives
 
   @spec key_executives(String.t()) ::
-    {:ok, [KeyExecutives.t()]} |
-    {:error, any()}
+          {:ok, [KeyExecutives.t()]}
+          | {:error, any()}
   def key_executives(ticker) do
     %URI{path: "v3/key-executives/#{ticker}"}
     |> URI.to_string()
