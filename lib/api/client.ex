@@ -17,7 +17,9 @@ defmodule ExFinancialModelingPrep.API.HTTPoison do
         body
 
       {:error, error} ->
-        Logger.info("#{__MODULE__} Failed to parse HTTP Response. #{inspect(error)}", error: error)
+        Logger.info("#{__MODULE__} Failed to parse HTTP Response. #{inspect(error)}",
+          error: error
+        )
 
         body
     end

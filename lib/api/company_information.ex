@@ -34,7 +34,7 @@ defmodule ExFinancialModelingPrep.Api.CompanyInformation do
   https://site.financialmodelingprep.com/developer/docs/#Company-Profile
   """
   @spec company_profile(String.t()) ::
-          {:ok, [ComapnyProfile.t()]}
+          {:ok, [CompanyProfile.t()]}
           | {:ok, :no_results}
           | {:error, any()}
   def company_profile(ticker) when is_bitstring(ticker) do
