@@ -3,12 +3,15 @@ defmodule ExFinancialModelingPrep do
   Documentation for `ExFinancialModelingPrep`.
   """
 
-  alias ExFinancialModelingPrep.Struct.KeyExecutives
-
   alias ExFinancialModelingPrep.Api.{
     CompanyInformation,
     StockFundamental,
     StockLookUpTool
+  }
+
+  alias ExFinancialModelingPrep.Struct.{
+    IncomeStatement,
+    KeyExecutives
   }
 
   @callback s_and_p_500_companies() :: {:ok | :error, any()}

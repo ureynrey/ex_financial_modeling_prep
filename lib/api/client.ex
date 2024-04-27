@@ -7,20 +7,10 @@ end
 defmodule ExFinancialModelingPrep.API.HTTPoison do
   @moduledoc false
   use HTTPoison.Base
-  require Logger
   @base_url "financialmodelingprep.com/api"
 
   def process_response_body(body) when is_bitstring(body) and bit_size(body) > 0 do
-    Jason.decode(body)
-    |> case do
-      {:ok, body} ->
-        body
-
-      {:error, error} ->
-        Logger.info("#{__MODULE__} Failed to parse HTTP Response. #{inspect(error)}", error: error)
-
-        body
-    end
+    Jason.decode!(body)
   end
 
   def process_response_body(body) when not is_bitstring(body) or bit_size(body) == 0,

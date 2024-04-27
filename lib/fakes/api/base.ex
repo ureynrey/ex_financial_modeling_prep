@@ -1,9 +1,14 @@
 defmodule Fakes.Api.Base do
   @moduledoc false
-  @doc """
-  Wraps body reponse in HTTPoison response
-  """
-  @spec ok_http_response(any(), List.t()) :: {:ok, HTTPoison.Response.t()}
+
+  @type opts :: [
+          {:method, HTTPoison.Request.method()},
+          {:endpoint, String.t()},
+          {:status_code, non_neg_integer()}
+        ]
+
+  @doc "Wraps body reponse in HTTPoison response"
+  @spec ok_http_response(any(), opts()) :: {:ok, HTTPoison.Response.t()}
   def ok_http_response(body, opts \\ []) do
     method = Keyword.get(opts, :method, :get)
     endpoint = Keyword.get(opts, :endpoint, "api/v3/endpoint")
