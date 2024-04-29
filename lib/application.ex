@@ -11,15 +11,8 @@ defmodule ExFinancialModelingPrep.Application do
   # Atoms fails to load due because BEAM loads things lazily. This funciton ensure atom declared in struct
   # are ready to be consumes on a `String.to_exisiting_atom/1`
   defp ensure_structs_loaded do
-    [
-      ExFinancialModelingPrep.Struct.BalanceSheetStatement,
-      ExFinancialModelingPrep.Struct.CashFlowStatement,
-      ExFinancialModelingPrep.Struct.Company,
-      ExFinancialModelingPrep.Struct.CompanyProfile,
-      ExFinancialModelingPrep.Struct.IncomeStatement,
-      ExFinancialModelingPrep.Struct.KeyExecutives,
-      ExFinancialModelingPrep.Struct.Search
-    ]
-    |> Enum.each(&Code.ensure_loaded(&1))
+    # Ensures that all atoms are loaded. Supports `ExFinancialModelingPrep.Helpers.resource_to_struct/2`
+    {:ok, list_of_modules} = :application.get_key(:ex_financial_modeling_prep, :modules)
+    Code.ensure_all_loaded(list_of_modules)
   end
 end
