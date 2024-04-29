@@ -12,6 +12,6 @@ defmodule ExFinancialModelingPrep.Api.CompanyInformationTest do
 
   test "company_profile fails" do
     expect(HTTPMock, :get, fn _ -> {:error, "something went wrong"} end)
-    assert {:error, reason} = CompanyInformation.company_profile("APPL")
+    assert {:error, _reason} = CompanyInformation.company_profile("APPL")
   end
 end

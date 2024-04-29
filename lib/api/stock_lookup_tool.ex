@@ -5,11 +5,13 @@ defmodule ExFinancialModelingPrep.Api.StockLookUpTool do
   alias ExFinancialModelingPrep.Api.Client
   alias ExFinancialModelingPrep.Struct.Search
 
+  @type search_opts :: [exchange: String.t()]
+
   @doc """
     Search via ticker and company name. Values for exchange options are:
       ETF | MUTUAL_FUND | COMMODITY | INDEX | CRYPTO | FOREX | TSX | AMEX | NASDAQ | NYSE | EURONEXT | XETRA | NSE | LSE
   """
-  @spec search(String.t(), exchange: String.t()) ::
+  @spec search(String.t(), search_opts()) ::
           {:ok, [Search.t()]} | {:error, HTTPoison.Error.t()}
   def search(ticker_or_company, opts) do
     query =
